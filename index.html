@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="moldy">
+<head>
+	<title>Moldy Pickle</title>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" rel="stylesheet">
+	<link href="css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="css/moldy-pickle.css" rel="stylesheet">
+
+	<!-- Piwik -->
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(["setDomains", ["*.www.moldypickle.com"]]);
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		var u="https://piwik.jasontdc.net/";
+		_paq.push(['setTrackerUrl', u+'piwik.php']);
+		_paq.push(['setSiteId', 1]);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="https://piwik.jasontdc.net/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+	<!-- End Piwik Code -->
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-37625670-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.2.0/ui-bootstrap-tpls.js"></script>
+	<script src="js/moldy-pickle.js"></script>
+	<meta name="tinfoil-site-verification" content="2fc80c8d1f35e65129a11428b335c6ad2c4d7b1a" />
+</head>
+<body>
+<div class="container pagination-centered">
+	<div class="row">
+		<div class="span12">
+			<div ng-controller="MoldyCtrl">
+				<div class="btn-group-wrapper">
+					<div class="btn-group text-center" data-toggle="buttons-checkbox">
+						<button id="pickle" type="button" class="btn btn-custom btn-large" ng-model="multiplier" ng-click="$broadcast('registerClick')" btn-radio="0">Pickle</button>
+						<button id="moldy" type="button" class="btn btn-custom btn-large" ng-model="multiplier" ng-click="$broadcast('registerClick')" btn-radio="10">Moldy Pickle</button>
+					</div>
+				</div>
+				<div class="moldy-imgs">
+					<div ng-repeat="image in images" class="moldy-img">
+						<img style="filter:{{100*(image.opacity*multiplier-image.offset)}};-moz-opacity:{{image.opacity*multiplier-image.offset}};-khtml-opacity:{{image.opacity*multiplier-image.offset}};opacity:{{image.opacity*multiplier-image.offset}};" src="{{image.url}}" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
